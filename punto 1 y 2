@@ -1,0 +1,34 @@
+##########################################
+#                                        # 
+#              Quiz 2                    #
+#                                        #
+# Idalia Hernandez L y Marieth Guillen G #
+#                                        #
+##########################################
+
+# Importar los paquetes de gapminder y dplyr
+library(gapminder)
+library(dplyr)
+attach(gapminder)
+
+# Punto 1
+df <- gapminder%>%
+  filter(continent == 'Americas' | continent== 'Asia' | continent== 'Oceania' | continent== 'Europe' | continent== 'Africa')%>%
+  group_by(continent) %>% summarise(mean_gdpPercap=mean(gdpPercap))
+
+df <- droplevels(df)
+barplot(df$mean_gdpPercap~df$continent, xlab="Continente" ,ylab="PIB",col='purple')
+
+
+# Punto 2
+
+datos_2000 = gapminder %>% filter (year > 2000)
+datos_2000 
+
+mean(datos_2000$lifeExp)
+mean(datos_2000$pop)
+mean(datos_2000$gdpPercap)
+
+sd(datos_2000$lifeExp)
+sd(datos_2000$pop)
+sd(datos_2000$gdpPercap)
